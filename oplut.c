@@ -67,7 +67,7 @@ static struct oplut_field get_field(struct oplut *ops, struct oplut_conf *conf,
   return field;
 }
 
-struct oplut_alloc_size alloc_size(struct oplut *ops,
+static struct oplut_alloc_size alloc_size(struct oplut *ops,
                                           struct oplut_conf *conf,
                                           struct glob glob) {
 
@@ -138,7 +138,7 @@ static struct oplut_alloc_size init(struct oplut_od *ods, struct oplut *ops,
     struct oplut *op = &ops[i];
     size_t lut_index = (op->val >> field.shift) & field.mask;
     struct oplut_rt *next_op = &ods->lut[lut_index];
-    if (next_op->cb == 0) { /* first time - set to user data */
+    if (next_op->cb == 0) { /* 1st time - set to user data */
       if (new_glob.mask != op->mask) {
         /* not in a unique position given masks */
         next_op->od = op; /* references the input ops list */

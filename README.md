@@ -19,6 +19,7 @@ int print_op(void *od, void *ud, oplut_op val) {
 }
 
 static struct oplut ops[] = {
+    /* callback, user data, opcode, opcode fixed-mask */
     {print_op, "nop",          0x0000, 0xffff},
     {print_op, "movw",         0x0100, 0xff00},
     {print_op, "muls",         0x0200, 0xff00},
